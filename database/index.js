@@ -5,7 +5,7 @@ const faker = require('faker');
 
 require('dotenv').config({ path: '../.env' });
 
-mongoose.connect('mongodb://victor:victor123@ds125385.mlab.com:25385/products', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/products', { useNewUrlParser: true });
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
