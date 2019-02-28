@@ -1,6 +1,7 @@
 
-# H1 product-reviews
+#Product-reviews
 
-product reveiws component for product display page
+####Product reveiws component for product description page
 
 
+##API routes:
