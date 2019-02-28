@@ -7,12 +7,12 @@ Product reveiws component for product description page
 
 1. /api/addreview/<product-id-number>
   
-  Rertrieves
+-- Rertrieves
   
 2. /api/addreview/<product-id-number>
   
-  Rertrieves
+-- Rertrieves
 
 3. /api/addreview/<product-id-number>
   
-  Rertrieves
+-- Rertrieves
