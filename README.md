@@ -7,7 +7,7 @@ Product reveiws component for product description page
 
 1. /api/addreview/<product-id-number>
   
-  * Gets
+   Gets
   
 2. /api/addreview/<product-id-number>
   
