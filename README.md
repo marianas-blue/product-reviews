@@ -5,14 +5,18 @@ Product reveiws component for product description page
 
 ## API routes:
 
-1. /api/addreview/<product-id-number>
-  
-   Gets
-  
-2. /api/addreview/<product-id-number>
-  
-  * Gets
+#### GET
 
-3. /api/addreview/<product-id-number>
+1. /api/product/<product-id-number>/summary_engagements
   
-  * Gets
+   Fetches summary level engagements for product
+   
+2. /api/product/<product-id-number>/pictures/<display|viewer>
+  
+   Fetches user generated picture content for display. 
+   --* display: 4 pictures for default display
+   --* viewer: All images for picture explorer modal
+
+3. /api/product/<product-id-number>/summary_engagements
+  
+   Gets 
