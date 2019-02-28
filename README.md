@@ -7,7 +7,7 @@ Product reveiws component for product description page
 
 ### GET
 
-#### 1. /api/product/<product-id-number>/summary_engagements
+#### 1. /api/product/<product id number>/summary_engagements
 
    Fetches summary level engagements for product
    
