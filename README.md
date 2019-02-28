@@ -14,9 +14,9 @@ Fetches summary level engagements for product
   
 Fetches user generated picture content for display. 
 
---* display: 4 pictures for default display
+  * display: 4 pictures for default display
    
---* viewer: All images for picture explorer modal
+  * viewer: All images for picture explorer modal
 
 #### 3. /api/product/{product-id-number}/summary_engagements
   
