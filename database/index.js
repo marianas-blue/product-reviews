@@ -83,4 +83,14 @@ function grabProduct(productid, callback) {
   });
 }
 
+function postComment(productid, callback) {
+  Review.updateOne({ product_id: productid }, { $set: { category: 'extreme!' } }, (err, stuff) => {
+    if (err) {
+      callback(err);
+    }
+    callback(null, stuff);
+  });
+}
+
 module.exports.grabProduct = grabProduct;
+module.exports.postComment = postComment;

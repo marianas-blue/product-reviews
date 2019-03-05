@@ -5,6 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 const grabProduct = require('../database/index.js').grabProduct;
+const postComment = require('../database/index.js').postComment;
 
 const app = express();
 
@@ -28,6 +29,18 @@ app.get('/api/product/:id', (req, res) => {
     res.status(200).send(num);
   });
 });
+// ////////////////////added routes///////////////////
+app.post('/api/addreview/:id', (req, res) => {
+  const id = req.params.id;
+  postComment(id, (err, num) => {
+    if (err) {
+      res.status(404).send();
+    }
+    res.status(200).send(num);
+  });
+});
+
+// ///////////////////////////////////////////////////
 
 // the index.html
 app.get('*', (req, res) => {
