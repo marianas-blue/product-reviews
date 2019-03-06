@@ -55,3 +55,6 @@ FOREIGN KEY (review_id) REFERENCES rvs.reviews (id)
 );
 
 -- psql -d marianas -c "\copy rvs.review_pictures  FROM 'dummydata_review_pictures.csv' delimiter ',' csv;"
+
+CREATE INDEX review_index
+ON rvs.reviews (product_id);
