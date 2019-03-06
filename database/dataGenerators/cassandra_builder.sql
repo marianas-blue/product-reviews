@@ -13,4 +13,4 @@ CREATE TABLE reviews(
 COPY rvs.reviews (product_id, product_name, product_category, reviews) 
 FROM './dummydata_cassandra.csv' WITH DELIMITER = '|';
 
--- cqlsh -e "COPY rvs.reviews (product_id, product_name, product_category, reviews) FROM './dummydata_cassandra.csv' WITH HEADER = false;"
+-- cqlsh -e "COPY rvs.reviews (product_id, product_name, product_category, reviews) FROM './dummydata_cassandra.csv' WITH HEADER = false and DELIMITER = '|' and MAXBATCHSIZE=200;"
