@@ -4,7 +4,8 @@ const compression = require('compression');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
-const grabProduct = require('../database/index.js').grabProduct;
+const grabProductPostGres = require('../database/index.js').grabProductPostGres;
+const grabProductCassandra = require('../database/index.js').grabProductCassandra;
 
 const app = express();
 
@@ -18,16 +19,33 @@ const port = 3008;
 // bundle
 app.use(express.static(`${__dirname}/../client/dist`));
 
-// api will also deliver the static files. product/:id serves my data
-app.get('/api/product/:id', (req, res) => {
+// ////////////////////added routes///////////////////
+
+app.get('/api/productPostGres/:id', (req, res) => {
   const id = req.params.id;
-  grabProduct(id, (err, num) => {
+  const startTime = Date.now();
+  grabProductPostGres(id, (err, num) => {
     if (err) {
       res.status(404).send();
     }
     res.status(200).send(num);
+    console.log('the time it took for PostGres was: ', (Date.now() - startTime));
   });
 });
+
+app.get('/api/productCassandra/:id', (req, res) => {
+  const id = req.params.id;
+  const startTime = Date.now();
+  grabProductCassandra(id, (err, num) => {
+    if (err) {
+      res.status(404).send();
+    }
+    res.status(200).send(num);
+    console.log('the time it took for Cassandra was: ', (Date.now() - startTime));
+  });
+});
+
+// ///////////////////////////////////////////////////
 
 // the index.html
 app.get('*', (req, res) => {

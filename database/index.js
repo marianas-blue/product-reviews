@@ -1,86 +1,30 @@
 /* eslint-disable no-console */
 /* eslint-disable camelcase */
-const mongoose = require('mongoose');
-const faker = require('faker');
+const pg = require('pg');
+const cassandra = require('cassandra-driver');
 
-require('dotenv').config({ path: '../.env' });
+const cassClient = new cassandra.Client({ contactPoints: ['127.0.0.1'], localDataCenter: 'datacenter1' });
 
-mongoose.connect('mongodb://localhost/products', { useNewUrlParser: true });
-const db = mongoose.connection;
+const conString = 'postgres://localhost:5432/marianas';
+const pgClient = new pg.Client(conString);
+pgClient.connect();
 
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {
-  console.log('Connection is open');
-});
-
-// eslint-disable-next-line prefer-destructuring
-const Schema = mongoose.Schema;
-const reviewSchema = new Schema({
-  product_id: Number,
-  category: String,
-  product_name: String,
-  product_ratings: Number,
-  review: String,
-  review_title: String,
-  reviewer: String,
-  images: [],
-  verified_purchase: Boolean,
-  helpful_counter: Number,
-  created_at: String,
-});
-
-const Review = mongoose.model('Review', reviewSchema);
-
-Review.deleteMany({}, () => {
-  console.log('Database running');
-});
-
-const data = {
-  category: ['shoes', 'electronics', 'apparel', 'auto', 'health', 'lifestyle', 'tech', 'furniture',
-    'splurge', 'food'],
-  verified_purchase: [true, false],
-};
-
-const generateImages = () => {
-  const imgs = [];
-  imgs.push(faker.image.food());
-  imgs.push(faker.image.cats());
-  imgs.push(faker.image.animals());
-  imgs.push(faker.image.nature());
-  return imgs;
-};
-
-for (let i = 0; i <= 100; i += 1) {
-  for (let j = 0; j <= Math.floor(Math.random() * 6) + 1; j += 1) {
-    const review_instance = new Review({
-      product_id: i,
-      category: data.category[Math.floor(Math.random() * data.category.length)],
-      product_name: faker.commerce.productName(),
-      product_ratings: Math.floor(Math.random() * 5) + 1,
-      review: faker.lorem.sentences(),
-      review_title: faker.lorem.sentence(),
-      reviewer: faker.name.findName(),
-      images: generateImages(),
-      verified_purchase: data.verified_purchase[Math.floor(Math.random()
-        * data.verified_purchase.length)],
-      helpful_counter: Math.floor(Math.random() * 500) + 1,
-      created_at: faker.date.past().toDateString(),
-    });
-    review_instance.save((err) => {
-      if (err) {
-        console.log(err);
-      }
-    });
-  }
-}
-
-function grabProduct(productid, callback) {
-  Review.find({ product_id: productid }, (err, num) => {
+function grabProductPostGres(productid, callback) {
+  pgClient.query('select r.review from rvs.reviews r join (select * from rvs.products where id = $1::int) p on (p.id = r.product_id);', [productid], (err, res) => {
     if (err) {
       callback(err);
     }
-    callback(null, num);
+    callback(null, res.rows);
   });
 }
 
-module.exports.grabProduct = grabProduct;
+function grabProductCassandra(productid, callback) {
+  cassClient.execute('select product_id, reviews from rvs.reviews where product_id = ?;', [productid], { prepare: true }, (err, res) => {
+    if (err) {
+      callback(err);
+    }
+    callback(null, res.rows);
+  });
+}
+module.exports.grabProductPostGres = grabProductPostGres;
+module.exports.grabProductCassandra = grabProductCassandra;
