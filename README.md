@@ -18,11 +18,11 @@ Fetches user generated picture content for display.
    
   * viewer: All images for picture explorer modal
 
-#### 3. /api/product/{product-id-number}/reviews_all
+#### 3. `/api/product/{product-id-number}/reviews_all`
   
 Fetches all reviews for product
 
-#### 4. /api/product/{product-id-number}/reviews_top8/{sort_key}
+#### 4. `/api/product/{product-id-number}/reviews_top8/{sort_key}`
 
 Fetches the top 8 reviews as ranked by the sort key.
 
@@ -33,7 +33,7 @@ Fetches the top 8 reviews as ranked by the sort key.
   
   
 ### POST
-#### 1. /api/product/product-id-number/savereview
+#### 1. `/api/product/product-id-number/savereview`
 
 Saves a user entered comment on product
 
@@ -45,12 +45,12 @@ Saves a user entered comment on product
   review: String,
   review_title: String,
   reviewer: String,
-  image: ??????????, 
+  image: String 
 }
 
 ```
 
-#### 2. /api/product/{product-id-number}/savecomment/{review-id-number}
+#### 2. `/api/product/{product-id-number}/savecomment/{review-id-number}`
   
 Saves a user entered comment on review
 
@@ -62,17 +62,17 @@ Saves a user entered comment on review
   comment: String,
   comment_title: String,
   commentor: String,
-  image: ??????????, 
+  image: String,
 }
 
 ```
    
-#### 3. /api/product/{product-id-number}/abuse_flag/{review|comment}/{id-number}
+#### 3. `/api/product/{product-id-number}/abuse_flag/{review|comment}/{id-number}`
   
 Passes a possible abusive content tag per review or comment
 
 
-#### 4. /api/product/{product-id-number}/helpful_flag/{review|comment}/{id-number}
+#### 4. `/api/product/{product-id-number}/helpful_flag/{review|comment}/{id-number}`
 
 Passes a helpful content tag per review
 
