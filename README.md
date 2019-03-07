@@ -8,15 +8,15 @@ Product reveiws component for product description page
 ### GET
 #### 1. `/api/product/product-id-number/summary_engagements`
 
-###### Fetches summary level engagements for product
+Fetches summary level engagements for product
    
 #### 2. `/api/product/{product-id-number}/pictures/{display|viewer}`
   
-###### Fetches user generated picture content for display. 
+Fetches user generated picture content for display. 
 
-######   * display: 4 pictures for default display
+  * display: 4 pictures for default display
    
-######   * viewer: All images for picture explorer modal
+  * viewer: All images for picture explorer modal
 
 #### 3. /api/product/{product-id-number}/reviews_all
   
