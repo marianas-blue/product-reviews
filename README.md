@@ -10,7 +10,7 @@ Product reveiws component for product description page
 
 Fetches summary level engagements for product
    
-#### 2. `/api/product/{product-id-number}/pictures/{display|viewer}`
+#### 2. `/api/product/{product-id-number}/pictures/{review-id-number}/{display|viewer}`
   
 Fetches user generated picture content for display. 
 
