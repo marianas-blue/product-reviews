@@ -71,12 +71,12 @@ Passes a possible abusive content tag per review
 
 Passes a helpful content tag per review
 
-#### 5. `/api/product/{product-id-number}/abuse_flag/comment/{comment-id-number}`
+#### 5. `/api/product/{product-id-number}/abuse_flag/comment/{review-id-number}/{comment-id-number}`
   
 Passes a possible abusive content tag per comment
 
 
-#### 6. `/api/product/{product-id-number}/helpful_flag/comment/{comment-id-number}`
+#### 6. `/api/product/{product-id-number}/helpful_flag/comment/{review-id-number}/{comment-id-number}`
 
 Passes a helpful content tag per comment
 
