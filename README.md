@@ -37,7 +37,6 @@ Saves a user entered comment on product
 ```javascript
 
 { 
-  product_id: Number,
   product_ratings: Number,
   review: String,
   review_title: String,
@@ -54,7 +53,6 @@ Saves a user entered comment on review
 ```javascript
 
 { 
-  product_id: Number,
   review_id: Number
   comment: String,
   comment_title: String,
