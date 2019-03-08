@@ -49,22 +49,13 @@ Saves a user entered comment on review
 {"comment":"Totally a good thing. I like it!","commentor":"This guy","image":"https://s3.amazonaws.com/marianas-amazon/cat5.jpg", "time_of_comment": 1543650500}
 
 ```
-   
-#### 3. `/api/product/{product-id-number}/abuse_flag/review/{review-id-number}`
-  
-Passes a possible abusive content tag per review
 
-
-#### 4. `/api/product/{product-id-number}/helpful_flag/review/{review-id-number}`
+#### 3. `/api/product/{product-id-number}/helpful_flag/review/{review-id-number}`
 
 Passes a helpful content tag per review
 
-#### 5. `/api/product/{product-id-number}/abuse_flag/comment/{review-id-number}/{comment-id-number}`
-  
-Passes a possible abusive content tag per comment
 
-
-#### 6. `/api/product/{product-id-number}/helpful_flag/comment/{review-id-number}/{comment-id-number}`
+#### 4. `/api/product/{product-id-number}/helpful_flag/comment/{review-id-number}/{comment-id-number}`
 
 Passes a helpful content tag per comment
 
