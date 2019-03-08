@@ -30,7 +30,7 @@ Fetches the top 8 reviews as ranked by highest rated.
   
   
 ### POST
-#### 1. `/api/product/product-id-number/savereview`
+#### 1. `/api/product/{product-id-number}/savereview`
 
 Saves a user entered comment on product
 
@@ -64,12 +64,21 @@ Saves a user entered comment on review
 
 ```
    
-#### 3. `/api/product/{product-id-number}/abuse_flag/{review|comment}/{id-number}`
+#### 3. `/api/product/{product-id-number}/abuse_flag/review/{review-id-number}`
   
-Passes a possible abusive content tag per review or comment
+Passes a possible abusive content tag per review
 
 
-#### 4. `/api/product/{product-id-number}/helpful_flag/{review|comment}/{id-number}`
+#### 4. `/api/product/{product-id-number}/helpful_flag/review/{review-id-number}`
 
 Passes a helpful content tag per review
+
+#### 5. `/api/product/{product-id-number}/abuse_flag/comment/{comment-id-number}`
+  
+Passes a possible abusive content tag per comment
+
+
+#### 6. `/api/product/{product-id-number}/helpful_flag/comment/{comment-id-number}`
+
+Passes a helpful content tag per comment
 
