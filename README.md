@@ -36,13 +36,7 @@ Saves a user entered comment on product
 
 ```javascript
 
-{ 
-  product_ratings: Number,
-  review: String,
-  review_title: String,
-  reviewer: String,
-  image: String 
-}
+{"product_ratings":5,"review":"Totally a good thing. I like it!","review_title":"This thing is the best!","reviewer":"This guy","image":"https://s3.amazonaws.com/marianas-amazon/cat5.jpg", "time_of_review": 1543650500}
 
 ```
 
@@ -52,13 +46,7 @@ Saves a user entered comment on review
 
 ```javascript
 
-{ 
-  review_id: Number
-  comment: String,
-  comment_title: String,
-  commentor: String,
-  image: String,
-}
+{"comment":"Totally a good thing. I like it!","commentor":"This guy","image":"https://s3.amazonaws.com/marianas-amazon/cat5.jpg", "time_of_comment": 1543650500}
 
 ```
    
