@@ -18,13 +18,14 @@ Fetches user generated picture content for display.
   
 Fetches all reviews for product
 
-#### 4. `/api/product/{product-id-number}/reviews_top8/{sort_key}`
+#### 4. `/api/product/{product-id-number}/reviews_top8/recent`
 
-Fetches the top 8 reviews as ranked by the sort key.
+Fetches the top 8 reviews as ranked by most recent.
 
-  * recent: most recent reviews
-   
-  * top: highest average star ranking
+
+#### 4. `/api/product/{product-id-number}/reviews_top8/rated`
+
+Fetches the top 8 reviews as ranked by highest rated.
   
   
   
