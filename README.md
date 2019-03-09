@@ -50,23 +50,25 @@ Saves a user entered comment on review
 
 ```
 
-#### 3. `/api/product/{product-id-number}/editreview/{review-id-number}`
-  
-Edits a user entered comment on review
-
-```javascript
-
-{"product_ratings":5,"review":"Totally a good thing. I like it!","review_title":"This thing is the best!","reviewer":"This guy","image":"https://s3.amazonaws.com/marianas-amazon/cat5.jpg", "time_of_review": 1543650500}
-
-```
-
-#### 4. `/api/product/{product-id-number}/helpful_flag/review/{review-id-number}`
+#### 3. `/api/product/{product-id-number}/helpful_flag/review/{review-id-number}`
 
 Passes a helpful content tag per review
 
 ```javascript
 
 {"username":"Mr. Foundithelpful","time_of_event":12345}
+
+```
+
+### UPDATE
+
+#### 1. `/api/product/{product-id-number}/editreview/{review-id-number}`
+  
+Edits a user entered comment on review
+
+```javascript
+
+{"product_ratings":5,"review":"Totally a good thing. I like it!","review_title":"This thing is the best!","reviewer":"This guy","image":"https://s3.amazonaws.com/marianas-amazon/cat5.jpg", "time_of_review": 1543650500}
 
 ```
 
