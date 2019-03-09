@@ -64,4 +64,10 @@ Edits a user entered comment on review
 
 Passes a helpful content tag per review
 
+```javascript
+
+{"username":"Mr. Foundithelpful","time_of_event":12345}
+
+```
+
 
