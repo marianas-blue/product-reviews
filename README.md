@@ -65,7 +65,3 @@ Edits a user entered comment on review
 Passes a helpful content tag per review
 
 
-#### 5. `/api/product/{product-id-number}/helpful_flag/comment/{review-id-number}/{comment-id-number}`
-
-Passes a helpful content tag per comment
-
