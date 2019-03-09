@@ -32,7 +32,7 @@ Fetches the top 8 reviews as ranked by highest rated.
 ### POST
 #### 1. `/api/product/{product-id-number}/savereview`
 
-Saves a user entered comment on product
+Saves a user entered review on product
 
 ```javascript
 
