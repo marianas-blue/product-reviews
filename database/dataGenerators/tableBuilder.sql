@@ -1,7 +1,7 @@
 
 CREATE DATABASE IF NOT EXISTS marianas;
 -- DROP SCHEMA rvs CASCADE;
--- CREATE SCHEMA rvs;
+CREATE SCHEMA rvs;
 
 -- id, productName, productCategory
 CREATE TABLE rvs.products(
@@ -58,3 +58,19 @@ FOREIGN KEY (review_id) REFERENCES rvs.reviews (id)
 
 CREATE INDEX review_index
 ON rvs.reviews (product_id);
+
+CREATE INDEX picture_index
+ON rvs.review_pictures (review_id);
+
+CREATE INDEX comments_index
+ON rvs.comments (review_id);
+
+CREATE INDEX engagements_index
+ON rvs.engagments_helpful (review_id);
+
+-- if anything gets out of sync when posting: SELECT setval(pg_get_serial_sequence('rvs.reviews', 'id'), max(id)) FROM rvs.reviews;
+
+SELECT setval(pg_get_serial_sequence('rvs.reviews', 'id'), max(id)) FROM rvs.reviews;
+SELECT setval(pg_get_serial_sequence('rvs.comments', 'id'), max(id)) FROM rvs.comments;
+SELECT setval(pg_get_serial_sequence('rvs.engagments_helpful', 'id'), max(id)) FROM rvs.engagments_helpful;
+SELECT setval(pg_get_serial_sequence('rvs.review_pictures', 'id'), max(id)) FROM rvs.review_pictures;
