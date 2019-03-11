@@ -53,7 +53,7 @@ module.exports = {
   },
 
   grabTop8ReviewsRecent: (productid, callback) => {
-    const queryString = 'select r.id, r.username, r.headline, r.stars, r.time_of_review, r.review, count(distinct e.id) as helpful from rvs.reviews r left join rvs.engagments_helpful e on (r.id = e.review_id) where r.product_id = $1::int group by r.id, r.username, r.headline, r.stars, r.time_of_review, r.review order by time_of_review desc limit 8;';
+    const queryString = 'select r.id, r.username as reviewer, r.headline as review_title, r.stars, r.time_of_review as created_at, r.review as review, count(distinct e.id) as helpful_counter from rvs.reviews r left join rvs.engagments_helpful e on (r.id = e.review_id) where r.product_id = $1::int group by r.id, r.username, r.headline, r.stars, r.time_of_review, r.review order by time_of_review desc limit 8;';
     pgPool.query(queryString, [productid], (err, res) => {
       if (err) {
         callback(err);
@@ -63,7 +63,7 @@ module.exports = {
   },
 
   grabTop8ReviewsRating: (productid, body, callback) => {
-    const queryString = 'select r.id, r.username, r.headline, r.stars, r.time_of_review, r.review, count(distinct e.id) as helpful from rvs.reviews r left join rvs.engagments_helpful e on (r.id = e.review_id) where r.product_id = $1::int group by r.id, r.username, r.headline, r.stars, r.time_of_review, r.review order by stars desc limit 8;';
+    const queryString = 'select r.id, r.username as reviewer, r.headline as review_title, r.stars, r.time_of_review as created_at, r.review as review, count(distinct e.id) as helpful_counter from rvs.reviews r left join rvs.engagments_helpful e on (r.id = e.review_id) where r.product_id = $1::int group by r.id, r.username, r.headline, r.stars, r.time_of_review, r.review order by stars desc limit 8;';
     pgPool.query(queryString, [productid], (err, res) => {
       if (err) {
         callback(err);

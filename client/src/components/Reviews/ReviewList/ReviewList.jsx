@@ -16,6 +16,7 @@ class ReviewList extends React.Component {
     this.state = {
       reviewers: [],
       reviewTitle: [],
+      stars: [],
       review: [],
       helpful: [],
       datePosted: [],
@@ -27,14 +28,16 @@ class ReviewList extends React.Component {
     const fullUrl = document.URL;
     const urlArray = fullUrl.split('/');
     const lastSegment = urlArray[urlArray.length - 1];
-    axios.get(`/api/product/${lastSegment}`)
+    axios.get(`/api/product/${lastSegment}/reviews_top8/recent`)
       .then((res) => {
         for (let i = 0; i < res.data.length; i += 1) {
           this.state.reviewers.push(res.data[i].reviewer);
           this.state.reviewTitle.push(res.data[i].review_title);
+          this.state.reviewTitle.push(res.data[i].review_title);
+          this.state.stars.push(res.data[i].stars);
           this.state.review.push(res.data[i].review);
           this.state.helpful.push(res.data[i].helpful_counter);
-          this.state.datePosted.push(res.data[i].created_at);
+          this.state.datePosted.push(Date(res.data[i].created_at * 1000));
         }
         this.setState({ done: true });
       });
