@@ -1,5 +1,5 @@
 /* eslint-disable prefer-destructuring */
-require('newrelic');
+//require('newrelic');
 
 const express = require('express');
 const compression = require('compression');
@@ -23,6 +23,9 @@ app.use(express.static(`${__dirname}/../client/dist`));
 // //////////////////// ******* routes ******** ///////////////////
 
 // /// gets
+app.get('/loaderio-3a08a7567fa4a898ee799cfa63edd2e8', (req, res) => {
+  res.send('loaderio-3a08a7567fa4a898ee799cfa63edd2e8');
+});
 
 app.get('/api/product/:id/reviews_all', (req, res) => {
   const id = req.params.id;

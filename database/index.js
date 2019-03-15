@@ -5,8 +5,10 @@ const pg = require('pg');
 // const conString = 'postgres://localhost:5432/marianas';
 // const pgClient = new pg.Client(conString);
 const pgPool = new pg.Pool({
-  host: 'localhost',
-  port: 5432,
+  host: '52.90.84.64',
+  user: 'postgres',
+  password: 'hackreactor',
+  port: 9999,
   database: 'marianas',
   max: 50,
   idleTimeoutMillis: 30000,
@@ -53,7 +55,7 @@ module.exports = {
   },
 
   grabTop8ReviewsRecent: (productid, callback) => {
-    const queryString = 'select r.id, r.username as reviewer, r.headline as review_title, r.stars, r.time_of_review as created_at, r.review as review, count(distinct e.id) as helpful_counter from rvs.reviews r left join rvs.engagments_helpful e on (r.id = e.review_id) where r.product_id = $1::int group by r.id, r.username, r.headline, r.stars, r.time_of_review, r.review order by time_of_review desc limit 8;';
+    const queryString = 'select p.id, r.id, r.username as reviewer, r.headline as review_title, r.stars, r.time_of_review as created_at, r.review as review, count(distinct e.id) as helpful_counter from rvs.products p left join rvs.reviews r on (p.id = r.product_id) left join rvs.engagments_helpful e on (r.id = e.review_id) where p.id = $1::int group by p.id, r.id, r.username, r.headline, r.stars, r.time_of_review, r.review order by time_of_review desc limit 8;';
     pgPool.query(queryString, [productid], (err, res) => {
       if (err) {
         callback(err);
